@@ -125,7 +125,6 @@ int main(int argc, char *argv[])
 	int node_count = 0;
 	FILE *fp;
 
-	printf("%ld\n", sizeof(s_node));
 	/*signal(SIGINT, catch_sigint);*/
 	if (argc != 3 && argc != 4)
 		err_prnt(97, NULL);
@@ -141,7 +140,7 @@ int main(int argc, char *argv[])
 	if (node_count > 0)
 	{
 		print_search_list(&head, search_str, 1);
-		handle_input(&lineptr, &head, search_str);
+		handle_input(&lineptr, &head, search_str, fp);
 	}
 
 	free(lineptr);

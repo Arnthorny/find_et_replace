@@ -66,7 +66,8 @@ char *extract_word(char *s)
 
 	while (s && s[i])
 	{
-		/*Check if `word` is quoted and s[i] is not a newline. Or that `s[i]` is not a whitespace*/
+		/*Check if `word` is quoted and s[i] is not a newline.*/
+		/*Or that `s[i]` is not a whitespace*/
 		if ((s[i] != '\n' && word && (word[0] == '\'' || word[0] == '"')) ||
 				(s[i] != ' ' && s[i] != '\t' && s[i] != '\n'))
 		{

@@ -1,6 +1,5 @@
 #include "main.h"
 
-int handle_replace(char *lptr, char *f_word, s_node **head, ssize_t nchars, int count);
 int replace_node(s_node *node, char *replace);
 int update_replace_line(s_node *node, char *search);
 int det_r_text(char *lptr, char *f_word, ssize_t nchars, char **replace);
@@ -9,14 +8,16 @@ int det_r_text(char *lptr, char *f_word, ssize_t nchars, char **replace);
  * handle_replace - Function to determine replacement string and handle
  * replacement for search node(s).
  * @lptr: This string/line holds the command to be executed
- * @f_word: Substring of `lptr` containing command and quoted replacement(if any).
+ * @f_word: Substring of `lptr` containing command and
+ * quoted replacement(if any).
  * @head: Double pointer to node(s) to be manipulated
- * nchars: Number of chars read by getline.
- * flag: Flag to determine if one node(1) or all nodes(0) are manipulated.
+ * @nchars: Number of chars read by getline.
+ * @flag: Flag to determine if one node(1) or all nodes(0) are manipulated.
  * Return: 1 for success else 0.
  */
 
-int handle_replace(char *lptr, char *f_word, s_node **head, ssize_t nchars, int flag)
+int handle_replace(char *lptr, char *f_word, s_node **head,
+		ssize_t nchars, int flag)
 {
 
 	char *replacer = NULL;
@@ -66,15 +67,18 @@ int replace_node(s_node *node, char *replace_str)
 
 	free(node->replace);
 	node->replace = tmp_str;
+
 	return (1);
 }
 
 /**
- * det_r_text - This function determines the replacement string for search node(s).
+ * det_r_text - This function determines the replacement string
+ * for search node(s).
  * @lptr: This string/line holds the command to be executed
- * @f_word: Substring of `lptr` containing command and quoted replacement(if any).
- * nchars: Number of chars read by getline.
- * replace: Double pointer to store replacement string
+ * @f_word: Substring of `lptr` containing command and
+ * quoted replacement(if any).
+ * @nchars: Number of chars read by getline.
+ * @replace: Double pointer to store replacement string
  * Return: 1 if valid replacement was found else 0.
  */
 
@@ -96,7 +100,7 @@ int det_r_text(char *lptr, char *f_word, ssize_t nchars, char **replace)
 			}
 		}
 	}
-	/*If tmp_word is NULL, it means no replacement string was found in given line*/
+	/*If tmp_word is NULL, it means no replacemnt string was found in given line*/
 	/*Check if any was given prior to execution (argv)*/
 	if (!tmp_word)
 	{
@@ -114,7 +118,7 @@ int det_r_text(char *lptr, char *f_word, ssize_t nchars, char **replace)
 			replace_text = NULL;
 	}
 	*replace = replace_text;
-	return(1);
+	return (1);
 }
 
 /**
