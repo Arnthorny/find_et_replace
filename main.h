@@ -1,6 +1,7 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
@@ -59,5 +60,6 @@ int handle_replace(char *lptr, char *f_word, s_node **head,
 		ssize_t nchars, int count);
 int save_changes(s_node **head, char *search, FILE *fp);
 int update_replace_line(s_node *node, char *search);
+void undo_replace(s_node *node);
 
 #endif /*_MAIN_H_*/

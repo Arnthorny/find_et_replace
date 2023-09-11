@@ -35,7 +35,6 @@ int delegate_fn(s_node **h, s_node **curr_node,
 			break;
 		case 'r':
 			r_status = handle_replace(lptr, f_word, curr_node, nchars, 1);
-			printf("The replacer is now: %s\n", (*curr_node)->replace);
 			if (r_status)
 				delegate_fn(h, curr_node, "n", nchars, srch, fp);
 			break;
@@ -46,6 +45,10 @@ int delegate_fn(s_node **h, s_node **curr_node,
 			break;
 		case 'h':
 			printf("%s\n", help_str(2));
+			break;
+		case 'u':
+			undo_replace(*curr_node);
+			printf("Pending replace undone\n");
 			break;
 		case 's':
 			s_status = save_changes(h, srch, fp);
@@ -86,6 +89,7 @@ void handle_input(char **lptr, s_node **h, char *srch, FILE *fp)
 	while (1)
 	{
 		printf("%s", prompt);
+		/*TODO: Consider using fgets instead/mnt/c/users/tony/documents*/
 		nchars = getline(lptr, &n, stdin);
 		if (nchars == -1)
 		{
@@ -100,7 +104,6 @@ void handle_input(char **lptr, s_node **h, char *srch, FILE *fp)
 				perror("handle_input");
 				break;
 			}
-			printf("The previous command was %s\n", tmp_s);
 			exec_status = delegate_fn(h, &curr_node, tmp_s, strlen(tmp_s), srch, fp);
 			free(tmp_s);
 		}

@@ -10,7 +10,7 @@ void err_prnt(int err_code, __attribute__((unused))void *ptr)
 	switch (err_code)
 	{
 		case 97:
-			dprintf(2, "Usage: fetr file find_str [replace_str]\n");
+			dprintf(2, "Usage: fetr file search_str [replace_str]\n");
 			break;
 		case 98:
 			dprintf(2, "Error: Can't read from file %s\n", (char *) ptr);
@@ -91,18 +91,18 @@ int handle_file_search(FILE *fp, char *fname, char *search_str, s_node **head)
 
 char *help_str(int type)
 {
-	char *help_1 = "fetr: fetr file find_str [replace_str]\n"
+	char *help_1 = "fetr: fetr file search_str [replace_str]\n"
 		"\tOptions:\n"
 		"\t  p - Show previous \tn - Show next \ta - Show all\n"
-		"\t  x <text> - Replace all with text  \tr <text> - Replace current with text\n"
-		"\t  q - Quit \th - Help \ts - Save changes \tu - Undo replacement\n"
+		"\t  x <text> - Replace all with `text`  \tr <text> - Replace current with `text`\n"
+		"\t  q - Quit \t\th - Help \ts - Save changes \tu - Undo replacement\n"
 		"\n\tThe `text` argument takes precendence over `replace_str`.\n"
 		"\tThe `text` argument, if provided must be quoted.\n"
 		"\tIf neither is provided, a blank string is used for replacement.\n"
 		"\tA line due for replacement is prefixed with an `r`.\n";
 
 	char *help_2 = "p - Show previous \tn - Show next \ta - Show all\n"
-		"x <text> - Replace all with text  \tr <text> - Replace current with text\n"
+		"x <text> - Replace all with `text`  \tr <text> - Replace current with `text`\n"
 		"q - Quit \th - Help \ts - Save changes \tu - Undo replacement\n";
 
 	if (type == 1)
