@@ -3,7 +3,7 @@
 /**
  * backup_file - A function that backups a file content
  * into a `filename`.bak file
- * @filename: The name of the file to be back-up.
+ * @filename: The name of the file to be backed up.
  * @fp_from: File pointer to file for backup.
  * Return: 0 if function runs successfully else 1.
  */
@@ -63,6 +63,7 @@ s_node *scan_entire_line(s_node **head, char *line_dup, char *srch, int lnum)
 	s_node *tmp = NULL;
 	char *fnd_str = NULL, *srch_line = line_dup;
 	char **ptr_line_dup = NULL;
+	int srch_str_len = strlen(srch);
 
 	ptr_line_dup = malloc(sizeof(*ptr_line_dup) * 2);
 	if (!ptr_line_dup)
@@ -73,7 +74,9 @@ s_node *scan_entire_line(s_node **head, char *line_dup, char *srch, int lnum)
 	fnd_str = strstr(srch_line, srch);
 	do {
 		tmp = insert_node(head, ptr_line_dup, lnum, fnd_str);
-		srch_line = fnd_str + 1;
+		if (!tmp)
+			return (NULL);
+		srch_line = fnd_str + srch_str_len;
 		fnd_str = strstr(srch_line, srch);
 	} while (fnd_str);
 
@@ -121,4 +124,3 @@ int insert_srch_nodes(FILE *fp, char *search_str, s_node **head)
 		return (102);
 	return (0);
 }
-

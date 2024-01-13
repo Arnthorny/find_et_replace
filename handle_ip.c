@@ -18,6 +18,7 @@ int delegate_fn(s_node **h, s_node **curr_node,
 	char f_char = f_word && strlen(f_word) == 1 ? f_word[0] : '\0';
 	int r_status = 0, s_status = 0;
 
+	/* TODO - Reduce number of lines with use of function pointers*/
 	switch (f_char)
 	{
 		case '\n':
@@ -89,7 +90,7 @@ void handle_input(char **lptr, s_node **h, char *srch, FILE *fp)
 	while (1)
 	{
 		printf("%s", prompt);
-		/*TODO: Consider using fgets instead/mnt/c/users/tony/documents*/
+		/*TODO: Consider using fgets instead*/
 		nchars = getline(lptr, &n, stdin);
 		if (nchars == -1)
 		{

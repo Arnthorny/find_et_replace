@@ -113,9 +113,15 @@ char *help_str(int type)
 
 
 /**
-  * main - This program mimics the UNIX shell.
+  * main - This program works as a search and replace tool
   * @argc: Number of arguments passed in
   * @argv: A NULL-teminated array of strings passed to CLI.
+  * Description: The program searches a file line by line for the given
+  * `search_str` and builds a circular double linked list with each node
+  * containing information about a line and the position of the searched
+  * string on that line. This node also holds a the replacement string
+  * if any is given by the user.
+  *
   * Return: Exit status code.
   */
 int main(int argc, char *argv[])

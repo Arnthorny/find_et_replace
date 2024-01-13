@@ -5,7 +5,7 @@
  * doubly linked list.
  * @head: Pointer to pointer of dll head.
  * @data: Pointer to string to be inserted into list.
- * @start: Pointer to start of searched string in data.
+ * @start: Pointer to start of searched string in data[0].
  * @line: Line number of string.
  *
  * Return: Pointer to newly inserted node.
@@ -44,7 +44,7 @@ s_node *insert_node(s_node **head, char **data, int line, char *start)
 }
 
 /**
- * print_search_list - Function to print search nodes of circular
+ * print_search_list - Function to print search node(s) of circular
  * doubly linked list.
  * @head: Pointer to pointer to head/node of circular dll.
  * @search: Searched text.
